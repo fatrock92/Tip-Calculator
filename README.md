@@ -31,8 +31,6 @@ Heres a walkthrough of implemented user stories:
 <img src='http://imgur.com/JyuDmfm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://imgur.com/2X3NCun' title='Saving of default setings across app start' width='' alt='Video Walkthrough' />
 
-![alt tag](http://imgur.com/JyuDmfm)
-
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
