@@ -13,6 +13,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tipPercentageTextFied: UITextField!
     @IBOutlet weak var sliderRangeMin: UITextField!
     @IBOutlet weak var sliderRangeMax: UITextField!
+    @IBOutlet weak var splitTextField: UITextField!
+    @IBOutlet weak var splitSliderMin: UITextField!
+    @IBOutlet weak var splitSliderMax: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +27,25 @@ class SettingsViewController: UIViewController {
         var tipPercentage = 15
         var sliderMin = 0
         var sliderMax = 30
+        var split = 3
+        var splitMin = 1
+        var splitMax = 5
         
-        if ((defaults.object(forKey: "tip_percentage")) != nil) {
-            print("Not Nil\n")
-            tipPercentage = defaults.integer(forKey: "tip_percentage")
-            sliderMin = defaults.integer(forKey: "slider_min")
-            sliderMax = defaults.integer(forKey: "slider_max")
+        if ((defaults.object(forKey: "split")) != nil) {
+            tipPercentage   = defaults.integer(forKey: "tip_percentage")
+            sliderMin       = defaults.integer(forKey: "slider_min")
+            sliderMax       = defaults.integer(forKey: "slider_max")
+            split           = defaults.integer(forKey: "split")
+            splitMin        = defaults.integer(forKey: "split_slider_min")
+            splitMax        = defaults.integer(forKey: "split_slider_max")
         }
         
         tipPercentageTextFied.text = String(tipPercentage)
         sliderRangeMin.text        = String(sliderMin)
         sliderRangeMax.text        = String(sliderMax)
+        splitTextField.text        = String(split)
+        splitSliderMin.text        = String(splitMin)
+        splitSliderMax.text        = String(splitMax)
         
     }
     
@@ -50,28 +61,22 @@ class SettingsViewController: UIViewController {
         let tipPercentage = Int(tipPercentageTextFied.text!) ?? 0
         let sliderMin = Int(sliderRangeMin.text!) ?? 0
         let sliderMax = Int(sliderRangeMax.text!) ?? 0
+        let split = Int(splitTextField.text!) ?? 0
+        let splitMin = Int(splitSliderMin.text!) ?? 0
+        let splitMax = Int(splitSliderMax.text!) ?? 0
         
         defaults.set(tipPercentage, forKey: "tip_percentage")
         defaults.set(sliderMin, forKey: "slider_min")
         defaults.set(sliderMax, forKey: "slider_max")
+        defaults.set(split, forKey: "split")
+        defaults.set(splitMin, forKey: "split_slider_min")
+        defaults.set(splitMax, forKey: "split_slider_max")
         defaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func tipPercentageEditingChagned(_ sender: Any) {
-        
-    }
-
-    @IBAction func sliderMinEditingChanged(_ sender: Any) {
-        
-    }
-    
-    @IBAction func sliderMaxEditingChanged(_ sender: Any) {
-        
     }
     
     /*
