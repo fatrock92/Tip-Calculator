@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitSliderLabel: UILabel!
     @IBOutlet weak var splitLabel: UILabel!
     @IBOutlet weak var splitSlider: UISlider!
-   
+    
+    
     @IBAction func OnTap(_ sender: Any) {
         view.endEditing(true)
     }
@@ -40,7 +41,6 @@ class ViewController: UIViewController {
         var splitMax = 5
         
         if ((defaults.object(forKey: "split")) != nil) {
-            print("Not Nil\n")
             tipPercentage   = defaults.integer(forKey: "tip_percentage")
             sliderMin       = defaults.integer(forKey: "slider_min")
             sliderMax       = defaults.integer(forKey: "slider_max")
@@ -69,6 +69,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    public func convertIntToString(_ number: Double) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = NumberFormatter.Style.currency
+        let priceString = currencyFormatter.string(from: NSNumber(value: number))
+        return priceString!
+    }
+    
+    public func convertoStringToInt(_ string: String) -> Double {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = NumberFormatter.Style.currency
+        let price = currencyFormatter.number(from: string)
+        return price as! Double
+    }
+    
     @IBAction func sliderValueChanged(_ sender: Any) {
         let val = Int(tipPercentageSlider.value)
         tipPercentageLabel.text = String(val) + "%"
@@ -79,9 +95,9 @@ class ViewController: UIViewController {
         let splitVal = Int(splitSlider.value)
         let splitAmount = (total+bill) / Double(splitVal)
         
-        splitLabel.text = String(format: "$%.2f", splitAmount)
-        tipLabel.text = String(format: "$%.2f", total)
-        totalLabel.text = String(format: "$%.2f", total+bill)
+        splitLabel.text = convertIntToString(splitAmount)
+        tipLabel.text = convertIntToString(total)
+        totalLabel.text = convertIntToString(total+bill)
     }
     @IBAction func billEditingChanged(_ sender: Any) {
         let bill = Double(billTextField.text!) ?? 0
@@ -91,19 +107,19 @@ class ViewController: UIViewController {
         let splitVal = Int(splitSlider.value)
         let splitAmount = (total+bill) / Double(splitVal)
         
-        splitLabel.text = String(format: "$%.2f", splitAmount)
-        tipLabel.text = String(format: "$%.2f", total)
-        totalLabel.text = String(format: "$%.2f", total+bill)
+        splitLabel.text = convertIntToString(splitAmount)
+        tipLabel.text = convertIntToString(total)
+        totalLabel.text = convertIntToString(total+bill)
     }
     
     @IBAction func splitSliderValueChanged(_ sender: Any) {
         let splitVal = Int(splitSlider.value)
         splitSliderLabel.text = String(splitVal)
-        var totalString = totalLabel.text ?? ""
-        let total = String(totalString.characters.dropFirst())
-        var splitAmount =  Double(total) ?? 0
-        splitAmount = splitAmount / Double(splitVal)
-        splitLabel.text = String(format: "$%.2f", splitAmount)
+        
+        let totalString = totalLabel.text ?? ""
+        let total = convertoStringToInt(totalString)
+        let splitAmount =  total / Double(splitVal)
+        splitLabel.text = convertIntToString(splitAmount)
     }
 }
 
