@@ -20,6 +20,9 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         

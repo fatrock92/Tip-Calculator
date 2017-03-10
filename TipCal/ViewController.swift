@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitSliderLabel: UILabel!
     @IBOutlet weak var splitLabel: UILabel!
     @IBOutlet weak var splitSlider: UISlider!
+   
+    @IBAction func OnTap(_ sender: Any) {
+        view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
         tipPercentageSlider.minimumValue = Float(sliderMin)
         tipPercentageSlider.maximumValue = Float(sliderMax)
         tipPercentageSlider.value        = Float(tipPercentage)
-        tipPercentageLabel.text          = String(tipPercentage)
+        tipPercentageLabel.text          = String(tipPercentage) + "%"
         splitSlider.minimumValue         = Float(splitMin)
         splitSlider.maximumValue         = Float(splitMax)
         splitSlider.value                = Float(split)
