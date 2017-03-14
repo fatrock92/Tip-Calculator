@@ -16,21 +16,23 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [ ] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
+* [x] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesnt have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 * [x] Added a slider for setting tip percentage.
-* [x] Added saving of slider values on the settings page.
+* [x] Added saving of tip percentage slider values on the settings page.
+* [x] Added a slider for setting tip split amount.
+* [x] Added saving of tip split amount slider values on the settings page.
 
 ## Video Walkthrough 
 
 Heres a walkthrough of implemented user stories:
 
-<img src='http://imgur.com/JyuDmfm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Demo video -> http://imgur.com/a/Tvej3
 
-<img src='http://imgur.com/2X3NCun' title='Saving of default setings across app start' width='' alt='Video Walkthrough' />
+Language Demo video -> http://imgur.com/a/n1Y9T
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
